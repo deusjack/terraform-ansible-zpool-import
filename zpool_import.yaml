@@ -1,0 +1,11 @@
+---
+- hosts: "{{ hostname }}"
+  gather_facts: no
+  tasks:
+    - name: Check if zpool exists
+      command: zpool list "{{ zpool }}"
+      register: zpool_list
+      ignore_errors: yes
+    - name: Import zpool
+      command: zpool import -f "{{ zpool }}"
+      when: zpool_list.rc != 0
