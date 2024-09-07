@@ -1,6 +1,6 @@
 resource "ansible_playbook" "import_zpool" {
   name                    = var.hostname
-  playbook                = "${path.root}/../ansible/zpool_import.yaml"
+  playbook                = "${path.module}/zpool_import.yaml"
   replayable              = false
   ignore_playbook_failure = false
   extra_vars = {
